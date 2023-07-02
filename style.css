@@ -1,0 +1,239 @@
+  :root {
+  --green-color: #005229;
+  --black-color: #0a0a0b;
+  --red-color: #f30f26;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Montserrat;
+
+}
+
+.navbar-container {
+  background-color: #005229;
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 0 30px 0 30px;
+}
+.logo {
+  font-weight: 1000;
+  font-size: 32px;
+  text-shadow: 1px 1px black;
+}
+.greenLogo {
+  color: var(--red-color);
+}
+
+.login {
+  font-size: 16px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.login span {
+  border: 1px solid white;
+  padding: 7px;
+  border-radius: 2px;
+}
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.bg {
+  background-image: url("bg.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: clamp(220px, 50vw, 800px);
+  width: 100vw;
+}
+
+.budget-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  background-color: white;
+}
+
+.budget-expenses {
+  display: flex;
+  justify-content: space-between;
+  width: 60vw;
+}
+img {
+  max-width: 200px;
+  max-height: 200px;
+  margin: auto;
+  padding: 20px;
+}
+.budget {
+  background-color: rgb(233, 233, 233);
+  margin-top: 50px;
+  border-radius: 5px;
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 250px;
+}
+
+.expense {
+  background-color: rgb(233, 233, 233);
+  margin-top: 50px;
+  border-radius: 5px;
+  padding: 20px 50px;
+  height: 250px;
+  gap:10px;
+  display: flex;
+  flex-direction: column;
+}
+.test {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.droplist,
+.droplistCurrency {
+  background-color: rgb(56, 56, 56);
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.expense-list,
+.currency-list {
+  background-color: rgb(56, 56, 56);
+  color: white;
+  list-style-type: none;
+  border-radius: 3px;
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 50px;
+  width: 182px;
+  transform: scale(0);
+  opacity: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.expense-list.open,
+.currency-list.open {
+  transform: scale(1);
+  opacity: 1;
+  margin-top: 90px;
+  margin-left: 0px;
+  transition: all 0.3s ease;
+}
+
+.dropdown-icon,
+.dropdown-currency-icon {
+  transition: all 0.2s ease;
+}
+.dropdown-icon.open,
+.dropdown-currency-icon.open {
+  transform: rotate(180deg);
+  transition: all 0.2s ease;
+}
+
+
+li {
+  padding: 2px;
+}
+li:hover {
+  background-color: rgb(20, 20, 20);
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+.set-button {
+  padding: 10px;
+  background-color: var(--green-color);
+  margin-top: 5px;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  margin-top:20px;
+}
+
+
+.input {
+  padding: 7px;
+  font-size: 16px;
+  outline: none;
+  border: 0;
+  border-radius: 3px;
+  background-color: rgb(201, 201, 201);
+
+}
+
+.total-budget {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: var(--black-color);
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  width: 60vw;
+}
+
+.top-row,
+.bottom-row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 5px 30px 5px 30px;
+}
+
+.expense-history {
+  display: flex;
+  justify-content: space-between;
+  width: 60vw;
+}
+.table-data{
+  height: 300px;
+  overflow: scroll;
+  border:1px solid rgba(202, 202, 202, 0.384)
+}
+
+th {
+  background-color: var(--green-color);
+  color: white;
+  font-size: 18px;
+  padding: 5px;
+  width:200px;
+  height: 50px;
+}
+td {
+  font-size: 16px;
+  width:200px;
+  height: 50px;
+  padding:10px;
+}
+tr:nth-child(even) {
+  background-color: rgb(225, 225, 225);
+}

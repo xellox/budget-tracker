@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Korpas Darius</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&family=Poppins&family=Roboto:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section class="navbar">
+      <div class="navbar-container">
+        <span class="logo">money<span class="greenLogo">Lover</span></span>
+        <div class="login">
+          <span>login</span>
+          <span>sign up</span>
+          <div class="menu">
+            <svg
+              stroke="currentColor"
+              fill="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              height="2em"
+              width="2em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M4 6H20V8H4zM8 11H20V13H8zM13 16H20V18H13z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="background">
+      <div class="bg"></div>
+    </section>
+
+    <section class="budget-app">
+      <div class="budget-container">
+        <div class="budget-expenses">
+          <div class="budget">
+            <h2>Budget</h2>
+            <div class="droplistCurrency">
+              <span class="currency-input">Currency</span>
+              <svg
+                class="dropdown-currency-icon"
+                stroke="currentColor"
+                fill="currentColor"
+                stroke-width="0"
+                viewBox="0 0 16 16"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 01.753 1.659l-4.796 5.48a1 1 0 01-1.506 0z"
+                ></path>
+              </svg>
+            </div>
+
+            <ul class="currency-list">
+              <li>Euro €</li>
+              <li>Dollar $</li>
+              <li>Pounds £</li>
+              <li>Yen ¥</li>
+            </ul>
+            <input
+              type=""
+              class="budget-input input"
+              placeholder="Enter your budget"
+            />
+            <div class="set-budget-button set-button">set budget</div>
+          </div>
+          <img src="shakeHands.png" alt="" />
+          <div class="expense">
+            <h2>Expenses</h2>
+
+            <div class="droplist">
+              <span class="category-input">Category</span>
+              <svg
+                class="dropdown-icon"
+                stroke="currentColor"
+                fill="currentColor"
+                stroke-width="0"
+                viewBox="0 0 16 16"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 01.753 1.659l-4.796 5.48a1 1 0 01-1.506 0z"
+                ></path>
+              </svg>
+            </div>
+
+            <ul class="expense-list">
+              <li>food</li>
+              <li>utilities</li>
+              <li>transportation</li>
+              <li>bills</li>
+              <li>housing</li>
+            </ul>
+            <input
+              
+              class="expense-input input"
+              placeholder="Enter amount spent"
+            />
+            <div class="set-expense-button set-button">place amount</div>
+          </div>
+        </div>
+        <div class="total-budget">
+          <div class="top-row">
+            <span>total budget</span>
+            <span>expenses</span>
+            <span>balance</span>
+          </div>
+          <div class="bottom-row">
+            <span class="budget-amount">0</span>
+            <span class="budget-spent">0</span>
+            <span class="balance">0</span>
+          </div>
+        </div>
+
+        <div class="expense-history">
+          <div class="table-data">
+            <table class="expense-table"></table>
+          </div>
+          <div>
+            <canvas id="myChart"></canvas>
+          </div>
+         
+        </div>
+      </div>
+    </section>    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="script.js"></script>
+  </body>
+</html>
