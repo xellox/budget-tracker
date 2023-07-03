@@ -1,4 +1,4 @@
-  :root {
+:root {
   --green-color: #005229;
   --black-color: #0a0a0b;
   --red-color: #f30f26;
@@ -11,7 +11,6 @@
 
 body {
   font-family: Montserrat;
-
 }
 
 .navbar-container {
@@ -53,11 +52,37 @@ body {
 }
 
 .bg {
-  background-image: url("bg.png");
-  background-size: contain;
+  background-image: url("bg.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
-  height: clamp(220px, 50vw, 800px);
+  height: clamp(200px, 70vw, 800px);
   width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: -2px;
+  line-height: clamp(1.5rem, 0.85rem + 3.4615vw, 3.95rem);
+}
+.bg-text {
+  color: rgb(225, 225, 225);
+  font-size: clamp(1.5625rem, 0.9135rem + 3.4615vw, 4.375rem);
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+  padding: 20px;
+  margin-right: 30%;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  box-shadow: 5px 5px 10px 2px black;
+}
+.bg-text:hover {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+}
+
+.click {
+  position: absolute;
+  margin-top: clamp(35px, 6vw, 55px);
+  color: rgb(255, 255, 255);
 }
 
 .budget-container {
@@ -71,45 +96,61 @@ body {
 
 .budget-expenses {
   display: flex;
-  justify-content: space-between;
-  width: 60vw;
+  justify-content:space-evenly;
 }
+
 img {
-  max-width: 200px;
-  max-height: 200px;
+  width: 200px;
+  height: 200px;
   margin: auto;
   padding: 20px;
 }
 .budget {
-  background-color: rgb(233, 233, 233);
-  margin-top: 50px;
-  border-radius: 5px;
   padding: 20px 50px;
-  display: flex;
-  flex-direction: column;
   gap: 10px;
-  height: 250px;
 }
 
 .expense {
-  background-color: rgb(233, 233, 233);
-  margin-top: 50px;
-  border-radius: 5px;
   padding: 20px 50px;
-  height: 250px;
-  gap:10px;
-  display: flex;
-  flex-direction: column;
-}
-.test {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+  gap: 10px;
 }
 
-.droplist,
+.expense,
+.budget {
+  margin-top: 50px;
+  background-color: rgb(233, 233, 233);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+}
+
+.setCurrency {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
 .droplistCurrency {
+  background-color: var(--black-color);
+  width: 30vw;
+  display: flex;
+  padding: 15px;
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  gap: 15px;
+  color: white;
+  cursor: pointer;
+}
+
+.droplistCurrency svg {
+  color:rgb(225, 225, 225)
+}
+
+.droplist {
   background-color: rgb(56, 56, 56);
   color: white;
   padding: 5px;
@@ -120,30 +161,53 @@ img {
   cursor: pointer;
 }
 
-.expense-list,
+.date,
+.description {
+  background-color: rgb(56, 56, 56);
+  color: white;
+  padding: 7px;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+}
+
+.expense-list {
+  background-color: rgb(56, 56, 56);
+  color: white;
+  list-style-type: none;
+  border-radius: 3px;
+  position: absolute;
+  margin-top: 20px;
+  width: 182px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  transform:scale(0);
+}
+
+.expense-list.open{
+  margin-top:90px;
+  transform:scale(1);
+}
 .currency-list {
   background-color: rgb(56, 56, 56);
   color: white;
   list-style-type: none;
   border-radius: 3px;
   position: absolute;
-  margin-top: 10px;
-  margin-left: 50px;
-  width: 182px;
-  transform: scale(0);
-  opacity: 0;
+  margin-top: 50px;
+  font-size:20px;
+  width: 30vw;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transform:scale(0);
+  transition: all 0.2s ease-in-out;
 }
 
-.expense-list.open,
+
 .currency-list.open {
-  transform: scale(1);
-  opacity: 1;
-  margin-top: 90px;
-  margin-left: 0px;
-  transition: all 0.3s ease;
+margin-top:170px;
+transform: scale(1);
 }
+
 
 .dropdown-icon,
 .dropdown-currency-icon {
@@ -154,7 +218,6 @@ img {
   transform: rotate(180deg);
   transition: all 0.2s ease;
 }
-
 
 li {
   padding: 2px;
@@ -173,9 +236,11 @@ h2 {
   border-radius: 3px;
   color: white;
   cursor: pointer;
-  margin-top:20px;
+  margin-top: 20px;
 }
-
+.set-budget-button{
+  margin-top:60px;
+}
 
 .input {
   padding: 7px;
@@ -184,40 +249,47 @@ h2 {
   border: 0;
   border-radius: 3px;
   background-color: rgb(201, 201, 201);
-
 }
 
 .total-budget {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+
   margin-top: 50px;
   margin-bottom: 50px;
-  background-color: var(--black-color);
-  color: white;
+  
   border-radius: 5px;
   padding: 10px;
-  width: 60vw;
+
 }
 
-.top-row,
-.bottom-row {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  padding: 5px 30px 5px 30px;
+.budget-bar{
+  width:770px;
+  
 }
+
+.budget-bar th{
+  background-color: var(--black-color);
+}
+.budget-bar td{
+  background-color: rgb(225, 225, 225);
+  font-size: 20px;
+}
+
+
+
+
+
+
 
 .expense-history {
   display: flex;
   justify-content: space-between;
-  width: 60vw;
+  width: 770px;
 }
-.table-data{
+
+.table-data {
   height: 300px;
   overflow: scroll;
-  border:1px solid rgba(202, 202, 202, 0.384)
+  border: 1px solid rgba(202, 202, 202, 0.384);
 }
 
 th {
@@ -225,15 +297,27 @@ th {
   color: white;
   font-size: 18px;
   padding: 5px;
-  width:200px;
+  width: 200px;
   height: 50px;
 }
 td {
   font-size: 16px;
-  width:200px;
+  width: 200px;
   height: 50px;
-  padding:10px;
+  padding: 10px;
 }
 tr:nth-child(even) {
   background-color: rgb(225, 225, 225);
+}
+
+.resetBtn {
+  margin:50px auto;
+  background-color: rgba(255, 0, 0, 0.5);
+  padding: 20px;
+  cursor: pointer;
+  width:770px;
+  font-size:20px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }

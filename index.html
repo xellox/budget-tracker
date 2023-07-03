@@ -17,8 +17,7 @@
       <div class="navbar-container">
         <span class="logo">money<span class="greenLogo">Lover</span></span>
         <div class="login">
-          <span>login</span>
-          <span>sign up</span>
+          
           <div class="menu">
             <svg
               stroke="currentColor"
@@ -37,38 +36,45 @@
     </section>
 
     <section class="background">
-      <div class="bg"></div>
+      <div class="bg">
+        <div class="bg-text"> <b>SAVE MORE.</b> <br> &nbsp;&nbsp; SPEND LESS.<svg class="click" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" height=".8em" width=".8em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.672 1.911a1 1 0 10-1.932.518l.259.966a1 1 0 001.932-.518l-.26-.966zM2.429 4.74a1 1 0 10-.517 1.932l.966.259a1 1 0 00.517-1.932l-.966-.26zm8.814-.569a1 1 0 00-1.415-1.414l-.707.707a1 1 0 101.415 1.415l.707-.708zm-7.071 7.072l.707-.707A1 1 0 003.465 9.12l-.708.707a1 1 0 001.415 1.415zm3.2-5.171a1 1 0 00-1.3 1.3l4 10a1 1 0 001.823.075l1.38-2.759 3.018 3.02a1 1 0 001.414-1.415l-3.019-3.02 2.76-1.379a1 1 0 00-.076-1.822l-10-4z" clip-rule="evenodd"></path></svg></div>
+      </div>
     </section>
+
+    <section class="setCurrency">
+    <div class="droplistCurrency">
+      <span class="currency-input">Set Currency</span>
+      <svg
+        class="dropdown-currency-icon"
+        stroke="currentColor"
+        fill="currentColor"
+        stroke-width="0"
+        viewBox="0 0 16 16"
+        height="1em"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 01.753 1.659l-4.796 5.48a1 1 0 01-1.506 0z"
+        ></path>
+      </svg>
+    </div>
+
+    <ul class="currency-list">
+      <li>Euro €</li>
+      <li>Dollar $</li>
+      <li>Pounds £</li>
+      <li>Yen ¥</li>
+    </ul>
+  </section>
+
 
     <section class="budget-app">
       <div class="budget-container">
         <div class="budget-expenses">
           <div class="budget">
             <h2>Budget</h2>
-            <div class="droplistCurrency">
-              <span class="currency-input">Currency</span>
-              <svg
-                class="dropdown-currency-icon"
-                stroke="currentColor"
-                fill="currentColor"
-                stroke-width="0"
-                viewBox="0 0 16 16"
-                height="1em"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 01.753 1.659l-4.796 5.48a1 1 0 01-1.506 0z"
-                ></path>
-              </svg>
-            </div>
-
-            <ul class="currency-list">
-              <li>Euro €</li>
-              <li>Dollar $</li>
-              <li>Pounds £</li>
-              <li>Yen ¥</li>
-            </ul>
+            <input type="date" class="date">
             <input
               type=""
               class="budget-input input"
@@ -97,7 +103,7 @@
                 ></path>
               </svg>
             </div>
-
+            <input type="text" placeholder="expense description"  class="description">
             <ul class="expense-list">
               <li>food</li>
               <li>utilities</li>
@@ -114,18 +120,26 @@
           </div>
         </div>
         <div class="total-budget">
-          <div class="top-row">
-            <span>total budget</span>
-            <span>expenses</span>
-            <span>balance</span>
-          </div>
-          <div class="bottom-row">
-            <span class="budget-amount">0</span>
-            <span class="budget-spent">0</span>
-            <span class="balance">0</span>
-          </div>
+          <table class="budget-bar">
+            <thead>
+              <tr>
+                <th>Total Budget</th>
+                <th>Expenses</th>
+                <th>Balance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="budget-amount" >0</td>
+                <td class="budget-spent">0</td>
+                <td class="balance">0</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+  
 
+        
         <div class="expense-history">
           <div class="table-data">
             <table class="expense-table"></table>
@@ -137,8 +151,9 @@
         </div>
       </div>
     </section>    
+    <div class="resetBtn">Reset everything</div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
