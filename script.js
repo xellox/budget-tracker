@@ -47,7 +47,7 @@ function CategoryValues() {
   foodSum = calculateCategorySum("food", ".food");
   let test = foodSum + setCurrency;
   utilitiesSum = calculateCategorySum("utilities", ".utilities");
-  transportationSum = calculateCategorySum("transportation", ".transportation");
+  transportationSum = calculateCategorySum("transportation", ".transport");
   billsSum = calculateCategorySum("bills", ".bills");
   housingSum = calculateCategorySum("housing", ".housing");
 }
