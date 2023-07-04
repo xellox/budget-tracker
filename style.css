@@ -1,5 +1,6 @@
 :root {
-  --green-color: #005229;
+  --light-green-color: rgb(0, 150, 60);
+  --green-color: rgb(0, 109, 44);
   --black-color: #0a0a0b;
   --red-color: #f30f26;
 }
@@ -7,6 +8,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -14,45 +16,23 @@ body {
 }
 
 .navbar-container {
-  background-color: #005229;
+  background-color: var(--green-color);
   color: rgb(255, 255, 255);
   display: flex;
-  justify-content: space-between;
   align-items: center;
   height: 60px;
-  padding: 0 30px 0 30px;
+  padding: 0 30px;
 }
 .logo {
   font-weight: 1000;
   font-size: 32px;
-  text-shadow: 1px 1px black;
 }
-.greenLogo {
+.redLogo {
   color: var(--red-color);
 }
 
-.login {
-  font-size: 16px;
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-.login span {
-  border: 1px solid white;
-  padding: 7px;
-  border-radius: 2px;
-}
-.menu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
 .bg {
-  background-image: url("bg.jpg");
+  background-image: url("images/bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   height: clamp(200px, 70vw, 800px);
@@ -63,8 +43,13 @@ body {
   letter-spacing: -2px;
   line-height: clamp(1.5rem, 0.85rem + 3.4615vw, 3.95rem);
 }
-.bg-text {
+
+.bg-text a {
+  text-decoration: none;
   color: rgb(225, 225, 225);
+}
+
+.bg-text {
   font-size: clamp(1.5625rem, 0.9135rem + 3.4615vw, 4.375rem);
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 3px;
@@ -91,12 +76,10 @@ body {
   align-items: center;
   flex-direction: column;
   width: 100vw;
-  background-color: white;
 }
 
 .budget-expenses {
   display: flex;
-  justify-content:space-evenly;
 }
 
 img {
@@ -104,15 +87,6 @@ img {
   height: 200px;
   margin: auto;
   padding: 20px;
-}
-.budget {
-  padding: 20px 50px;
-  gap: 10px;
-}
-
-.expense {
-  padding: 20px 50px;
-  gap: 10px;
 }
 
 .expense,
@@ -123,9 +97,11 @@ img {
   display: flex;
   flex-direction: column;
   height: 300px;
+  padding: 20px 50px;
+  gap: 10px;
 }
 
-.setCurrency {
+#setCurrency {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,10 +120,6 @@ img {
   gap: 15px;
   color: white;
   cursor: pointer;
-}
-
-.droplistCurrency svg {
-  color:rgb(225, 225, 225)
 }
 
 .droplist {
@@ -181,12 +153,12 @@ img {
   width: 182px;
   cursor: pointer;
   transition: all 0.2s ease;
-  transform:scale(0);
+  transform: scale(0);
 }
 
-.expense-list.open{
-  margin-top:90px;
-  transform:scale(1);
+.expense-list.open {
+  margin-top: 90px;
+  transform: scale(1);
 }
 .currency-list {
   background-color: rgb(56, 56, 56);
@@ -195,19 +167,17 @@ img {
   border-radius: 3px;
   position: absolute;
   margin-top: 50px;
-  font-size:20px;
+  font-size: 20px;
   width: 30vw;
   cursor: pointer;
-  transform:scale(0);
+  transform: scale(0);
   transition: all 0.2s ease-in-out;
 }
 
-
 .currency-list.open {
-margin-top:170px;
-transform: scale(1);
+  margin-top: 170px;
+  transform: scale(1);
 }
-
 
 .dropdown-icon,
 .dropdown-currency-icon {
@@ -238,8 +208,12 @@ h2 {
   cursor: pointer;
   margin-top: 20px;
 }
-.set-budget-button{
-  margin-top:60px;
+.set-button:hover{
+  background-color: var(--light-green-color)
+}
+
+.set-budget-button {
+  margin-top: 60px;
 }
 
 .input {
@@ -252,33 +226,22 @@ h2 {
 }
 
 .total-budget {
-
-  margin-top: 50px;
-  margin-bottom: 50px;
-  
+  margin:50px 0;
   border-radius: 5px;
   padding: 10px;
-
 }
 
-.budget-bar{
-  width:770px;
-  
+.budget-bar {
+  width: 770px;
 }
 
-.budget-bar th{
+.budget-bar th {
   background-color: var(--black-color);
 }
-.budget-bar td{
+.budget-bar td {
   background-color: rgb(225, 225, 225);
   font-size: 20px;
 }
-
-
-
-
-
-
 
 .expense-history {
   display: flex;
@@ -287,18 +250,18 @@ h2 {
 }
 
 .table-data {
-  height: 300px;
+  max-height: 300px;
   overflow: scroll;
-  border: 1px solid rgba(202, 202, 202, 0.384);
+  background-color: rgb(240, 240, 240);
 }
 
 th {
   background-color: var(--green-color);
   color: white;
-  font-size: 18px;
-  padding: 5px;
   width: 200px;
-  height: 50px;
+  font-size: 16px;
+  padding: 5px;
+  height: 40px;
 }
 td {
   font-size: 16px;
@@ -306,18 +269,128 @@ td {
   height: 50px;
   padding: 10px;
 }
-tr:nth-child(even) {
+tbody:nth-child(odd) {
   background-color: rgb(225, 225, 225);
 }
 
 .resetBtn {
-  margin:50px auto;
+  margin: 50px auto;
   background-color: rgba(255, 0, 0, 0.5);
-  padding: 20px;
+  padding: 15px;
   cursor: pointer;
-  width:770px;
-  font-size:20px;
-  display:flex;
+  width: 50vw;
+  font-size: clamp(1rem, 0.9423rem + 0.3077vw, 1.25rem);
+  display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.resetBtn:hover {
+  background-color: rgba(255, 0, 0, 0.6);
+}
+
+.footer {
+  width: 100vw;
+  height: 50px;
+  background-color: var(--black-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  color: rgb(199, 199, 199);
+  font-size: 15px;
+}
+.github-footer a {
+  color: white;
+}
+
+.github-footer a:hover {
+  color: var(--green-color);
+}
+
+/* alerts for user */
+.set-budget-button.open,
+.set-expense-button.open {
+  background-color: var(--red-color);
+  animation: alert 0.1s ease-in-out;
+}
+
+@keyframes alert {
+  0% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
+}
+
+@media (max-width: 800px) {
+  .budget-expenses {
+    gap: 50px;
+  }
+  .budget-bar {
+    width: 620px;
+  }
+
+  .expense-history {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    width: 620px;
+  }
+
+  .droplistCurrency {
+    width: 280px;
+  }
+  .currency-list {
+    width: 280px;
+  }
+
+  img {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .budget-expenses {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  img {
+    display: flex;
+  }
+
+  .expense {
+    margin-top: 0;
+  }
+
+  .budget-bar {
+    width: 300px;
+  }
+
+  .expense-history {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    width: 300px;
+  }
+
+  th {
+    background-color: var(--green-color);
+    color: white;
+    font-size: 13px;
+    padding: 5px;
+    height: 40px;
+  }
+  td {
+    font-size: 13px;
+    width: 200px;
+    height: 40px;
+    padding: 4px;
+  }
 }

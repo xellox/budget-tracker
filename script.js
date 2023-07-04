@@ -14,81 +14,81 @@ let expenseTable = document.querySelector(".expense-table");
 let expenseBtn = document.querySelector(".set-expense-button");
 let tableData = document.querySelector(".table-data");
 let spentBudget = document.querySelector(".budget-spent");
+let descriptionExpense = document.querySelector(".description");
 let balance = document.querySelector(".balance");
-let resetBtn = document.querySelector(".resetBtn")
+let resetBtn = document.querySelector(".resetBtn");
 
 let setCurrency = "";
 let setBudget = "";
 
 //declare each category in table constants globally so i can use them in the pie chart
-  let foodSum = 0;
-  let utilitiesSum = 0;
-  let transportationSum = 0;
-  let billsSum = 0;
-  let housingSum = 0;
+let foodSum = 0;
+let utilitiesSum = 0;
+let transportationSum = 0;
+let billsSum = 0;
+let housingSum = 0;
 
 //helper function to get the sum of each category in the table
-  function calculateCategorySum(categoryName, selector) {
-    let sum = 0;
-    const elements = document.querySelectorAll(selector);
+function calculateCategorySum(categoryName, selector) {
+  let sum = 0;
+  const elements = document.querySelectorAll(selector);
 
-    elements.forEach((item) => {
-      const expense = parseFloat(item.textContent);
-      if (!isNaN(expense)) {
-        sum += expense;
-      }
-    });
-    return sum;
-  }
+  elements.forEach((item) => {
+    const expense = parseFloat(item.textContent);
+    if (!isNaN(expense)) {
+      sum += expense;
+    }
+  });
+  return sum;
+}
 
-  // make use of helper function
-  function CategoryValues() {
-    foodSum = calculateCategorySum("food", ".food");
-    let test = foodSum + setCurrency
-    utilitiesSum = calculateCategorySum("utilities", ".utilities");
-    transportationSum = calculateCategorySum("transportation", ".transportation");
-    billsSum = calculateCategorySum("bills", ".bills");
-    housingSum = calculateCategorySum("housing", ".housing");
-  }
+// make use of helper function
+function CategoryValues() {
+  foodSum = calculateCategorySum("food", ".food");
+  let test = foodSum + setCurrency;
+  utilitiesSum = calculateCategorySum("utilities", ".utilities");
+  transportationSum = calculateCategorySum("transportation", ".transportation");
+  billsSum = calculateCategorySum("bills", ".bills");
+  housingSum = calculateCategorySum("housing", ".housing");
+}
 
 // create pieChart using chartJS
-  const pieChart = new Chart(document.getElementById("myChart"), {
-    type: "pie",
-    data: {
-      labels: ["food", "utilities", "transportation", "bills", "housing"],
-      datasets: [
-        {
-          backgroundColor: ['#003f5c',
-           '#58508d',
-            '#bc5090',
-            '#ff6361',
-            '#ffa600'],
-          data: [foodSum, utilitiesSum, transportationSum, billsSum, housingSum],
-        
-        }, 
-      ],
-    },
-    options: {
-      
-      responsive: true,
-    },
-
-  });
+const pieChart = new Chart(document.getElementById("myChart"), {
+  type: "pie",
+  data: {
+    labels: ["food", "utilities", "transportation", "bills", "housing"],
+    datasets: [
+      {
+        backgroundColor: [
+          "#003f5c",
+          "#58508d",
+          "#bc5090",
+          "#ff6361",
+          "#ffa600",
+        ],
+        data: [foodSum, utilitiesSum, transportationSum, billsSum, housingSum],
+      },
+    ],
+  },
+  options: {
+    responsive: true,
+  },
+});
 
 // keep the pieChart updated without needing to refresh the page/ call it on submit expenses
-  function updateChart() {
-    CategoryValues();
+function updateChart() {
+  CategoryValues();
 
-    pieChart.data.datasets[0].data = [
-      foodSum,
-      utilitiesSum,
-      transportationSum,
-      billsSum,
-      housingSum,
-    ];
+  pieChart.data.datasets[0].data = [
+    foodSum,
+    utilitiesSum,
+    transportationSum,
+    billsSum,
+    housingSum,
+  ];
 
-    pieChart.update();
-  }
+  pieChart.update();
+}
 
 // Display budget/ expenses list
 function displayCurrencyDroplist() {
@@ -126,7 +126,7 @@ currencyList.addEventListener("mousedown", (item) => {
   setCurrency = JSON.parse(localStorage.getItem("selectedCurrency"));
   budgetAmount.innerHTML = `${setBudget}${setCurrency.slice(-1)}`;
 
-//call the functions in wich you need to update the currency
+  //call the functions in wich you need to update the currency
   displayCurrencyDroplist();
   budgetSpentUpdate();
   updateTable();
@@ -142,13 +142,26 @@ currencyGetLocalStorage();
 
 // display total budget from input value on submit and store it in localStorage
 function submitBudget() {
-  if (budgetInput.value === "") {
-    alert("Input a number");
+  //add conditional statements and alert user
+  if (droplistInput.innerHTML === `Set Currency`) {
+    budgetBtn.innerHTML = `select your currency`;
+    budgetBtn.classList.toggle("open");
+
+    setTimeout(function () {
+      budgetBtn.classList.toggle("open");
+      budgetBtn.innerHTML = `set budget`; // Toggle the class again after the duration
+    }, 1000);
     return;
-  } else if (droplistInput.innerHTML === `Set Currency`) {
-    alert("select a currency");
+  } else if (budgetInput.value === "") {
+    budgetBtn.innerHTML = `Enter your budget`;
+    budgetBtn.classList.toggle("open");
+
+    setTimeout(function () {
+      budgetBtn.classList.toggle("open");
+      budgetBtn.innerHTML = `set budget`; // Toggle the class again after the duration
+    }, 1000);
     return;
-  } // if user inputs nothing, return alert
+  }
 
   let totalBudget = budgetInput.value;
   budgetAmount.innerHTML = totalBudget;
@@ -177,10 +190,10 @@ budgetInput.addEventListener("input", (event) => {
   const enteredValue = event.target.value;
   event.target.value = enteredValue.replace(/[^0-9]/g, "");
 });
-expenseInput.addEventListener("input", (event) =>{
+expenseInput.addEventListener("input", (event) => {
   const enteredValue = event.target.value;
   event.target.value = enteredValue.replace(/[^0-9]/g, "");
-})
+});
 //keep values updated when page refreshes
 function budgetGetLocalStorage() {
   setBudget = JSON.parse(localStorage.getItem("budget-amount"));
@@ -195,11 +208,34 @@ budgetGetLocalStorage();
 
 //add the data to the table on submit and set it to local storage
 function expenseData() {
-  if (droplistCategory.innerHTML === `Category`) {
-    alert("Select a category");
+
+  //add conditional statements and alert user
+  if (droplistInput.innerHTML === `Set Currency`) {
+    expenseBtn.innerHTML = `select your currency`;
+    expenseBtn.classList.toggle("open");
+
+    setTimeout(function () {
+      expenseBtn.classList.toggle("open");
+      expenseBtn.innerHTML = `add expense`; // Toggle the class again after the duration
+    }, 1000);
     return;
-  } else if (setCurrency === null || setCurrency === undefined) {
-    alert("Select a currency");
+  } else if (droplistCategory.innerHTML === "Category") {
+    expenseBtn.innerHTML = `select category first`;
+    expenseBtn.classList.toggle("open");
+
+    setTimeout(function () {
+      expenseBtn.classList.toggle("open");
+      expenseBtn.innerHTML = `add expense`; // Toggle the class again after the duration
+    }, 1000);
+    return;
+  } else if (expenseInput.value === "") {
+    expenseBtn.innerHTML = `enter amount spent`;
+    expenseBtn.classList.toggle("open");
+
+    setTimeout(function () {
+      expenseBtn.classList.toggle("open");
+      expenseBtn.innerHTML = `add expense`; // Toggle the class again after the duration
+    }, 1000);
     return;
   }
   setCurrency = JSON.parse(localStorage.getItem("selectedCurrency"));
@@ -208,6 +244,7 @@ function expenseData() {
   //add classes for each category so i can retrieve the sum for category for the piechart
   expenseRow.innerHTML = `
     <td>${droplistCategory.innerHTML}</td>
+    <td> ${descriptionExpense.value} </td>
     <td class="expense-items ${droplistCategory.innerHTML}">${
     expenseInput.value
   }${setCurrency.slice(-1)}</td>
@@ -220,21 +257,21 @@ function expenseData() {
   budgetSpentUpdate();
   updateTable();
   remainingBalance();
-  expenseInput.value = ''
+  expenseInput.value = "";
+  descriptionExpense.value = "";
 }
 
 expenseBtn.addEventListener("click", () => {
   expenseData();
   CategoryValues();
   updateChart();
-
 });
 
 expenseInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     expenseData();
     CategoryValues();
-  updateChart();
+    updateChart();
   }
 });
 
@@ -262,6 +299,7 @@ function updateTable() {
       <thead>
         <tr>
           <th>Category</th>
+          <th>Description</th>
           <th>Expense</th>
           <th>Date</th>
         </tr>
@@ -273,13 +311,11 @@ function updateTable() {
 }
 updateTable();
 
-
 //reset all Data button / clear from local storage
 resetBtn.addEventListener("click", () => {
-  localStorage.clear()
-  location.reload()
+  localStorage.clear();
+  location.reload();
 });
-
 
 //total spent function, sum upp all the expense data from the table
 function budgetSpentUpdate() {
@@ -292,7 +328,7 @@ function budgetSpentUpdate() {
       sum += expenseValue;
     }
   });
-  
+
   spentBudget.innerHTML = sum + setCurrency.slice(-1) || 0;
 }
 budgetSpentUpdate();
