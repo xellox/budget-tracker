@@ -258,17 +258,17 @@ h2 {
 th {
   background-color: var(--green-color);
   color: white;
-  width: 200px;
   font-size: 16px;
   padding: 5px;
   height: 40px;
 }
 td {
   font-size: 16px;
-  width: 200px;
   height: 50px;
   padding: 10px;
+  width:200px;
 }
+
 tbody:nth-child(odd) {
   background-color: rgb(225, 225, 225);
 }
@@ -368,7 +368,7 @@ tbody:nth-child(odd) {
   }
 
   .budget-bar {
-    width: 300px;
+    width: 280px;
   }
 
   .expense-history {
@@ -377,19 +377,18 @@ tbody:nth-child(odd) {
     justify-content: center;
     align-items: center;
     gap: 50px;
-    width: 300px;
+    width: 280px;
   }
 
   th {
     background-color: var(--green-color);
     color: white;
-    font-size: 13px;
+    font-size: 12px;
     padding: 5px;
     height: 40px;
   }
   td {
-    font-size: 13px;
-    width: 200px;
+    font-size: 12px;  
     height: 40px;
     padding: 4px;
   }
