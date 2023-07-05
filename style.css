@@ -261,6 +261,7 @@ th {
   font-size: 16px;
   padding: 5px;
   height: 40px;
+  width: 200px;
 }
 td {
   font-size: 16px;
@@ -386,10 +387,12 @@ tbody:nth-child(odd) {
     font-size: 12px;
     padding: 5px;
     height: 40px;
+    width: 0;
   }
   td {
     font-size: 12px;  
     height: 40px;
     padding: 4px;
+    width: 0px;
   }
 }
